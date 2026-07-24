@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan Laundry Detail - Cleanzy Laundry</title>
+    <meta name="description" content="Formulir pemesanan laundry antar-jemput detail Cleanzy. Pilih layanan, jadwal penjemputan, dan preferensi cuci Anda.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .order-nav-bar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .order-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--primary-deep);
+            background: var(--primary-light);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13.5px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .back-link:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            transform: translateX(-4px);
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        .order-hero-banner {
+            background: linear-gradient(135deg, #0F172A 0%, #1E66F5 100%);
+            color: #ffffff;
+            padding: 48px 0 72px;
+            text-align: center;
+        }
+        .order-hero-banner h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .order-hero-banner p {
+            font-size: 15px;
+            opacity: 0.85;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .order-content-layout {
+            margin-top: -40px;
+            padding-bottom: 90px;
+        }
+        .order-grid-container {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .order-form-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            border: 1.5px solid var(--border-color);
+        }
+        .form-step-section {
+            margin-bottom: 36px;
+            padding-bottom: 32px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .form-step-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .step-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-header h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-deep);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .form-group-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .form-group-field:last-child {
+            margin-bottom: 0;
+        }
+        .form-group-field label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .form-group-field label span {
+            color: #EF4444;
+        }
+        .form-input-ctrl {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            font-family: var(--font-body);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+            background: #ffffff;
+        }
+        .form-input-ctrl:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        .order-service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .order-svc-option {
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            background: #ffffff;
+        }
+        .order-svc-option:hover {
+            border-color: var(--primary);
+        }
+        .order-svc-option.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+        .svc-opt-title {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary-deep);
+            margin-bottom: 4px;
+        }
+        .svc-opt-price {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .addons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .addon-item-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F8FAFC;
+            border: 1.5px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .addon-item-label:hover {
+            background: #EFF6FF;
+            border-color: var(--primary);
+        }
+        .addon-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .addon-left input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+        .addon-price {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .summary-sticky-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            border: 1.5px solid var(--border-color);
+            position: sticky;
+            top: 100px;
+        }
+        .summary-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-deep);
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .summary-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13.5px;
+            color: var(--text-dark);
+        }
+        .summary-item-row.muted {
+            color: var(--text-muted);
+        }
+        .summary-item-row.discount-row {
+            color: #10B981;
+            font-weight: 700;
+        }
+
+        .promo-input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .promo-input-group input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border-color);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            outline: none;
+        }
+        .btn-apply-promo {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+        .btn-apply-promo:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px var(--primary-glow);
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 20px 0;
+        }
+
+        .total-pay-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+        .total-pay-lbl {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .total-pay-amount {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .btn-submit-order-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: var(--accent-green);
+            color: #ffffff;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 14px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 800;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+            transition: var(--transition);
+        }
+        .btn-submit-order-wa:hover {
+            background: #1FA954;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        .guarantee-note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 992px) {
+            .order-grid-container {
+                grid-template-columns: 1fr;
+            }
+            .summary-sticky-card {
+                position: static;
+            }
+        }
+        @media (max-width: 576px) {
+            .form-row-2, .order-service-grid {
+                grid-template-columns: 1fr;
+            }
+            .order-form-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="order-nav-bar">
+        <div class="container">
+            <div class="order-nav-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#1E66F5"/>
+                            <path d="M8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12Z" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="logo-title">Cleanzy<span class="logo-highlight">Laundry</span></span>
+                </a>
+                <a href="index.html" class="back-link">
+                    <span>← Kembali ke Beranda</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="order-hero-banner">
+        <div class="container">
+            <h1>Formulir Pemesanan Laundry</h1>
+            <p>Lengkapi rincian cucian dan lokasi penjemputan Anda. Kurir Cleanzy siap menjemput cucian tepat waktu!</p>
+        </div>
+    </div>
+
+    <main class="order-content-layout">
+        <div class="container">
+            <div class="order-grid-container">
+
+                <div class="order-form-card">
+                    <form id="orderDetailForm" onsubmit="event.preventDefault(); submitOrderToWA();">
+                        
+                        <div class="form-step-section">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <h3>Data Diri & Penjemputan</h3>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group-field">
+                                    <label for="custName">Nama Lengkap <span>*</span></label>
+                                    <input type="text" id="custName" class="form-input-ctrl" placeholder="Contoh: Budi Santoso" required oninput="calculateOrderTotal()">
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="custPhone">Nomor WhatsApp <span>*</span></label>
+                                    <input type="tel" id="custPhone" class="form-input-ctrl" placeholder="Contoh: 081234567890" required oninput="calculateOrderTotal()">
+                                </div>
+                            </div>
+
+                            <div class="form-group-field">
+                                <label for="custCity">Kota / Cabang Terdekat <span>*</span></label>
+                                <select id="custCity" class="form-input-ctrl" required onchange="calculateOrderTotal()">
+                                    <option value="Jakarta Pusat">Cleanzy Jakarta Pusat</option>
+                                    <option value="Jakarta Selatan">Cleanzy Jakarta Selatan</option>
+                                    <option value="Bandung">Cleanzy Bandung Branch</option>
+                                    <option value="Surabaya">Cleanzy Surabaya Branch</option>
+                                    <option value="Medan">Cleanzy Medan Branch</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-field">
+                                <label for="custAddress">Alamat Lengkap Penjemputan <span>*</span></label>
+                                <textarea id="custAddress" class="form-input-ctrl" rows="3" placeholder="Jl. Mawar No. 12, RT 02/05, Kel. Kebayoran Baru, Jakarta Selatan (Rumah pagar hitam)" required oninput="calculateOrderTotal()"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-step-section">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <h3>Pilih Jenis Layanan Laundry</h3>
+                            </div>
+
+                            <div class="order-service-grid">
+                                <div class="order-svc-option selected" id="svcOptReguler" onclick="selectOrderSvc('Cuci Kiloan Reguler', 6000, 'kg', this)">
+                                    <div class="svc-opt-title">🧺 Cuci Reguler (2-3 Hari)</div>
+                                    <div class="svc-opt-price">Rp 6.000 / kg</div>
+                                </div>
+                                <div class="order-svc-option" id="svcOptKilat" onclick="selectOrderSvc('Cuci Express 24H', 10000, 'kg', this)">
+                                    <div class="svc-opt-title">⚡ Cuci Express (24 Jam)</div>
+                                    <div class="svc-opt-price">Rp 10.000 / kg</div>
+                                </div>
+                                <div class="order-svc-option" id="svcOptSetrika" onclick="selectOrderSvc('Setrika Uap Saja', 4000, 'kg', this)">
+                                    <div class="svc-opt-title">👔 Setrika Uap Saja</div>
+                                    <div class="svc-opt-price">Rp 4.000 / kg</div>
+                                </div>
+                                <div class="order-svc-option" id="svcOptSepatu" onclick="selectOrderSvc('Laundry Sepatu', 30000, 'pasang', this)">
+                                    <div class="svc-opt-title">👟 Laundry Sepatu / Sneakers</div>
+                                    <div class="svc-opt-price">Rp 30.000 / pasang</div>
+                                </div>
+                                <div class="order-svc-option" id="svcOptBedcover" onclick="selectOrderSvc('Bed Cover & Selimut', 25000, 'pcs', this)">
+                                    <div class="svc-opt-title">🛏️ Bed Cover / Selimut</div>
+                                    <div class="svc-opt-price">Rp 25.000 / pcs</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group-field">
+                                    <label for="orderQty">Estimasi Jumlah / Berat (<span id="unitLabel">kg</span>) <span>*</span></label>
+                                    <input type="number" id="orderQty" class="form-input-ctrl" value="5" min="1" max="100" required oninput="calculateOrderTotal()">
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="perfumeSelect">Pilihan Aroma Parfum <span>*</span></label>
+                                    <select id="perfumeSelect" class="form-input-ctrl">
+                                        <option value="Fresh Cotton (Segar Harian)">Fresh Cotton (Segar & Clean)</option>
+                                        <option value="Lavender Relaxing">Lavender Relaxing (Lembut)</option>
+                                        <option value="Exotic Blue (Mewah)">Exotic Blue (Mewah Elegant)</option>
+                                        <option value="Snappy Sweet">Snappy Sweet (Manis Harum)</option>
+                                        <option value="Non-Parfum (Sensitif/Bayi)">Non-Parfum (Bebas Alergi)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-step-section">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <h3>Layanan Tambahan & Catatan</h3>
+                            </div>
+
+                            <div class="addons-list">
+                                <label class="addon-item-label">
+                                    <div class="addon-left">
+                                        <input type="checkbox" id="addonPickup" value="5000" onchange="calculateOrderTotal()">
+                                        <span>🚀 Jemput Kilat Priority (&lt; 1 Jam Langsung Sampai)</span>
+                                    </div>
+                                    <span class="addon-price">+Rp 5.000</span>
+                                </label>
+                                <label class="addon-item-label">
+                                    <div class="addon-left">
+                                        <input type="checkbox" id="addonHanger" value="3000" onchange="calculateOrderTotal()">
+                                        <span>👔 Plastic Hanger Cover Premium Double-Sealed</span>
+                                    </div>
+                                    <span class="addon-price">+Rp 3.000</span>
+                                </label>
+                                <label class="addon-item-label">
+                                    <div class="addon-left">
+                                        <input type="checkbox" id="addonAntiBakteri" value="4000" onchange="calculateOrderTotal()">
+                                        <span>🛡️ Treatment Anti-Bakteri, Debu & Tungau Steril</span>
+                                    </div>
+                                    <span class="addon-price">+Rp 4.000</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group-field" style="margin-top: 18px;">
+                                <label for="orderNotes">Catatan Khusus untuk Kasir / Kurir</label>
+                                <input type="text" id="orderNotes" class="form-input-ctrl" placeholder="Contoh: Baju batik mohon digantung, piyama jangan dipisahkan.">
+                            </div>
+                        </div>
+
+                        <div class="form-step-section">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <h3>Waktu Penjemputan & Pembayaran</h3>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group-field">
+                                    <label for="pickupDate">Tanggal Penjemputan <span>*</span></label>
+                                    <input type="date" id="pickupDate" class="form-input-ctrl" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="pickupTime">Jam Penjemputan <span>*</span></label>
+                                    <select id="pickupTime" class="form-input-ctrl" required>
+                                        <option value="Pagi (08.00 - 11.00)">Pagi (08.00 - 11.00 WIB)</option>
+                                        <option value="Siang (11.00 - 15.00)">Siang (11.00 - 15.00 WIB)</option>
+                                        <option value="Sore/Malam (15.00 - 19.00)">Sore/Malam (15.00 - 19.00 WIB)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group-field">
+                                <label for="paymentMethod">Metode Pembayaran <span>*</span></label>
+                                <select id="paymentMethod" class="form-input-ctrl" required>
+                                    <option value="QRIS All Payment (Gopay/ShopeePay/OVO/DANA)">QRIS All Payment (Scan QR)</option>
+                                    <option value="Transfer Bank BCA / Mandiri / BRI">Transfer Bank (BCA / Mandiri / BRI)</option>
+                                    <option value="COD - Bayar Saat Cucian Diantar Kembali">COD (Bayar Tunai saat Diantar)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="summary-sticky-card">
+                    <h3 class="summary-title">Ringkasan Pemesanan</h3>
+
+                    <div class="summary-items-list">
+                        <div class="summary-item-row">
+                            <span id="sumSvcName">Cuci Kiloan Reguler</span>
+                            <span id="sumSvcPrice">Rp 30.000</span>
+                        </div>
+                        <div class="summary-item-row muted">
+                            <span>Estimasi Qty:</span>
+                            <span id="sumQtyText">5 kg</span>
+                        </div>
+                        <div class="summary-item-row muted" id="rowAddons" style="display: none;">
+                            <span>Layanan Tambahan:</span>
+                            <span id="sumAddonsPrice">Rp 0</span>
+                        </div>
+                        <div class="summary-item-row discount-row" id="rowDiscount" style="display: none;">
+                            <span>Diskon Voucher (20%):</span>
+                            <span id="sumDiscountVal">-Rp 0</span>
+                        </div>
+                        <div class="summary-item-row">
+                            <span>Ongkos Kirim:</span>
+                            <span style="color: #10B981; font-weight: 700;">GRATIS</span>
+                        </div>
+                    </div>
+
+                    <div class="promo-input-group">
+                        <input type="text" id="promoCodeInput" placeholder="Kode Promo (AKUCINTAAMIKOM)">
+                        <button type="button" class="btn-apply-promo" onclick="applyPromoCode()">Pakai</button>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="total-pay-box">
+                        <span class="total-pay-lbl">Total Biaya:</span>
+                        <span class="total-pay-amount" id="grandTotalDisplay">Rp 30.000</span>
+                    </div>
+
+                    <button type="button" class="btn-submit-order-wa" onclick="submitOrderToWA()">
+                        Konfirmasi & Kirim Pesanan via WA →
+                    </button>
+
+                    <div class="guarantee-note">
+                        <span>🔒 Garansi Cuci Cleanzy 100% Bebas Noda & Garansi Uang Kembali</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom-inner" style="padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 13px;">
+                <p>&copy; 2026 Cleanzy Laundry Professional. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedSvcName = 'Cuci Kiloan Reguler';
+        let selectedSvcPrice = 6000;
+        let selectedUnit = 'kg';
+        let discountPercent = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickupDate').value = today;
+            calculateOrderTotal();
+        });
+
+        function selectOrderSvc(name, price, unit, element) {
+            document.querySelectorAll('.order-svc-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedSvcName = name;
+            selectedSvcPrice = price;
+            selectedUnit = unit;
+            document.getElementById('unitLabel').innerText = unit;
+            calculateOrderTotal();
+        }
+
+        function applyPromoCode() {
+            const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+            if (code === 'AKUCINTAAMIKOM') {
+                discountPercent = 0.20;
+                alert('🎉 Selamat! Kode Promo AKUCINTAAMIKOM berhasil dipasang. Anda mendapatkan diskon 20%!');
+            } else if (code === '') {
+                discountPercent = 0;
+            } else {
+                alert('⚠️ Kode promo tidak valid atau telah kadaluarsa.');
+                discountPercent = 0;
+            }
+            calculateOrderTotal();
+        }
+
+        function calculateOrderTotal() {
+            const qty = parseFloat(document.getElementById('orderQty').value) || 1;
+            const baseSubtotal = selectedSvcPrice * qty;
+
+            let addonsTotal = 0;
+            if (document.getElementById('addonPickup').checked) addonsTotal += 5000;
+            if (document.getElementById('addonHanger').checked) addonsTotal += 3000;
+            if (document.getElementById('addonAntiBakteri').checked) addonsTotal += 4000;
+
+            const subtotalBeforeDiscount = baseSubtotal + addonsTotal;
+            const discountAmount = subtotalBeforeDiscount * discountPercent;
+            const grandTotal = subtotalBeforeDiscount - discountAmount;
+
+            document.getElementById('sumSvcName').innerText = selectedSvcName;
+            document.getElementById('sumSvcPrice').innerText = 'Rp ' + baseSubtotal.toLocaleString('id-ID');
+            document.getElementById('sumQtyText').innerText = `${qty} ${selectedUnit}`;
+
+            if (addonsTotal > 0) {
+                document.getElementById('rowAddons').style.display = 'flex';
+                document.getElementById('sumAddonsPrice').innerText = 'Rp ' + addonsTotal.toLocaleString('id-ID');
+            } else {
+                document.getElementById('rowAddons').style.display = 'none';
+            }
+
+            if (discountPercent > 0) {
+                document.getElementById('rowDiscount').style.display = 'flex';
+                document.getElementById('sumDiscountVal').innerText = '-Rp ' + discountAmount.toLocaleString('id-ID');
+            } else {
+                document.getElementById('rowDiscount').style.display = 'none';
+            }
+
+            document.getElementById('grandTotalDisplay').innerText = 'Rp ' + grandTotal.toLocaleString('id-ID');
+        }
+
+        function submitOrderToWA() {
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const city = document.getElementById('custCity').value;
+            const address = document.getElementById('custAddress').value.trim();
+            const qty = document.getElementById('orderQty').value || 1;
+            const perfume = document.getElementById('perfumeSelect').value;
+            const notes = document.getElementById('orderNotes').value.trim() || 'Tidak ada';
+            const pickupDate = document.getElementById('pickupDate').value;
+            const pickupTime = document.getElementById('pickupTime').value;
+            const payment = document.getElementById('paymentMethod').value;
+            const grandTotal = document.getElementById('grandTotalDisplay').innerText;
+
+            if (!name || !phone || !address) {
+                alert('Harap lengkapi Nama, Nomor WhatsApp, dan Alamat Penjemputan Anda.');
+                return;
+            }
+
+            let addonsListText = [];
+            if (document.getElementById('addonPickup').checked) addonsListText.push('Jemput Priority (<1 Jam)');
+            if (document.getElementById('addonHanger').checked) addonsListText.push('Hanger Plastic Cover');
+            if (document.getElementById('addonAntiBakteri').checked) addonsListText.push('Treatment Anti-Bakteri');
+            const addonsString = addonsListText.length > 0 ? addonsListText.join(', ') : 'Tidak ada';
+
+            const messageText = 
+`🧺 *PESANAN LAUNDRY CLEANZY BARU* 🧺
+
+👤 *DATA PELANGGAN:*
+• Nama: ${name}
+• No. WA: ${phone}
+• Cabang/Kota: ${city}
+• Alamat Jemput: ${address}
+
+📦 *RINCIAN LAYANAN:*
+• Layanan: ${selectedSvcName}
+• Jumlah: ${qty} ${selectedUnit}
+• Aromaterapi: ${perfume}
+• Addons: ${addonsString}
+• Catatan Khusus: ${notes}
+
+📅 *JADWAL PENJEMPUTAN:*
+• Tanggal: ${pickupDate}
+• Waktu: ${pickupTime}
+
+💳 *PEMBAYARAN & TOTAL:*
+• Metode Bayar: ${payment}
+• *ESTIMASI TOTAL: ${grandTotal}*
+
+Mohon segera diproses dan konfirmasi penjemputannya ya admin Cleanzy! Terimakasih.`;
+
+            const encodedMsg = encodeURIComponent(messageText);
+            window.open(`https://wa.me/6281225212941?text=${encodedMsg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
