@@ -447,11 +447,11 @@
                             <div class="form-group-field">
                                 <label for="custCity">Kota / Cabang Terdekat <span>*</span></label>
                                 <select id="custCity" class="form-input-ctrl" required onchange="calculateOrderTotal()">
-                                    <option value="Jakarta Pusat">Cleanzy Jakarta Pusat</option>
-                                    <option value="Jakarta Selatan">Cleanzy Jakarta Selatan</option>
-                                    <option value="Bandung">Cleanzy Bandung Branch</option>
-                                    <option value="Surabaya">Cleanzy Surabaya Branch</option>
-                                    <option value="Medan">Cleanzy Medan Branch</option>
+                                    <option value="Cleanzy Yogyakarta 1">Cleanzy Yogyakarta 1 (Ring Road Utara)</option>
+                                    <option value="Cleanzy Yogyakarta 2">Cleanzy Yogyakarta 2 (Seturan)</option>
+                                    <option value="Cleanzy Purwokerto">Cleanzy Purwokerto</option>
+                                    <option value="Cleanzy Surakarta">Cleanzy Surakarta</option>
+                                    <option value="Cleanzy Ponorogo">Cleanzy Ponorogo</option>
                                 </select>
                             </div>
 
@@ -469,23 +469,23 @@
 
                             <div class="order-service-grid">
                                 <div class="order-svc-option selected" id="svcOptReguler" onclick="selectOrderSvc('Cuci Kiloan Reguler', 6000, 'kg', this)">
-                                    <div class="svc-opt-title">🧺 Cuci Reguler (2-3 Hari)</div>
+                                    <div class="svc-opt-title">Cuci Reguler (2-3 Hari)</div>
                                     <div class="svc-opt-price">Rp 6.000 / kg</div>
                                 </div>
                                 <div class="order-svc-option" id="svcOptKilat" onclick="selectOrderSvc('Cuci Express 24H', 10000, 'kg', this)">
-                                    <div class="svc-opt-title">⚡ Cuci Express (24 Jam)</div>
+                                    <div class="svc-opt-title">Cuci Express (24 Jam)</div>
                                     <div class="svc-opt-price">Rp 10.000 / kg</div>
                                 </div>
                                 <div class="order-svc-option" id="svcOptSetrika" onclick="selectOrderSvc('Setrika Uap Saja', 4000, 'kg', this)">
-                                    <div class="svc-opt-title">👔 Setrika Uap Saja</div>
+                                    <div class="svc-opt-title">Setrika Uap Saja</div>
                                     <div class="svc-opt-price">Rp 4.000 / kg</div>
                                 </div>
                                 <div class="order-svc-option" id="svcOptSepatu" onclick="selectOrderSvc('Laundry Sepatu', 30000, 'pasang', this)">
-                                    <div class="svc-opt-title">👟 Laundry Sepatu / Sneakers</div>
+                                    <div class="svc-opt-title">Laundry Sepatu / Sneakers</div>
                                     <div class="svc-opt-price">Rp 30.000 / pasang</div>
                                 </div>
                                 <div class="order-svc-option" id="svcOptBedcover" onclick="selectOrderSvc('Bed Cover & Selimut', 25000, 'pcs', this)">
-                                    <div class="svc-opt-title">🛏️ Bed Cover / Selimut</div>
+                                    <div class="svc-opt-title">Bed Cover / Selimut</div>
                                     <div class="svc-opt-price">Rp 25.000 / pcs</div>
                                 </div>
                             </div>
@@ -518,28 +518,28 @@
                                 <label class="addon-item-label">
                                     <div class="addon-left">
                                         <input type="checkbox" id="addonPickup" value="5000" onchange="calculateOrderTotal()">
-                                        <span>🚀 Jemput Kilat Priority (&lt; 1 Jam Langsung Sampai)</span>
+                                        <span>Jemput Kilat Priority (&lt; 1 Jam Langsung Sampai)</span>
                                     </div>
                                     <span class="addon-price">+Rp 5.000</span>
                                 </label>
                                 <label class="addon-item-label">
                                     <div class="addon-left">
                                         <input type="checkbox" id="addonHanger" value="3000" onchange="calculateOrderTotal()">
-                                        <span>👔 Plastic Hanger Cover Premium Double-Sealed</span>
+                                        <span>Plastic Hanger Cover Premium Double-Sealed</span>
                                     </div>
                                     <span class="addon-price">+Rp 3.000</span>
                                 </label>
                                 <label class="addon-item-label">
                                     <div class="addon-left">
                                         <input type="checkbox" id="addonAntiBakteri" value="4000" onchange="calculateOrderTotal()">
-                                        <span>🛡️ Treatment Anti-Bakteri, Debu & Tungau Steril</span>
+                                        <span>Treatment Anti-Bakteri, Debu & Tungau Steril</span>
                                     </div>
                                     <span class="addon-price">+Rp 4.000</span>
                                 </label>
                             </div>
 
                             <div class="form-group-field" style="margin-top: 18px;">
-                                <label for="orderNotes">Catatan Khusus untuk Kasir / Kurir</label>
+                                <label for="orderNotes">Catatan</label>
                                 <input type="text" id="orderNotes" class="form-input-ctrl" placeholder="Contoh: Baju batik mohon digantung, piyama jangan dipisahkan.">
                             </div>
                         </div>
@@ -621,7 +621,7 @@
                     </button>
 
                     <div class="guarantee-note">
-                        <span>🔒 Garansi Cuci Cleanzy 100% Bebas Noda & Garansi Uang Kembali</span>
+                        <span>Garansi Cuci Cleanzy 100% Bebas Noda & Garansi Uang Kembali</span>
                     </div>
                 </div>
 
@@ -663,11 +663,11 @@
             const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
             if (code === 'AKUCINTAAMIKOM') {
                 discountPercent = 0.20;
-                alert('🎉 Selamat! Kode Promo AKUCINTAAMIKOM berhasil dipasang. Anda mendapatkan diskon 20%!');
+                alert('Selamat! Kode Promo AKUCINTAAMIKOM berhasil dipasang. Anda mendapatkan diskon 20%!');
             } else if (code === '') {
                 discountPercent = 0;
             } else {
-                alert('⚠️ Kode promo tidak valid atau telah kadaluarsa.');
+                alert('Kode promo tidak valid atau telah kadaluarsa.');
                 discountPercent = 0;
             }
             calculateOrderTotal();
@@ -732,26 +732,26 @@
             const addonsString = addonsListText.length > 0 ? addonsListText.join(', ') : 'Tidak ada';
 
             const messageText = 
-`🧺 *PESANAN LAUNDRY CLEANZY BARU* 🧺
+`*PESANAN LAUNDRY CLEANZY BARU*
 
-👤 *DATA PELANGGAN:*
+*DATA PELANGGAN:*
 • Nama: ${name}
 • No. WA: ${phone}
 • Cabang/Kota: ${city}
 • Alamat Jemput: ${address}
 
-📦 *RINCIAN LAYANAN:*
+*RINCIAN LAYANAN:*
 • Layanan: ${selectedSvcName}
 • Jumlah: ${qty} ${selectedUnit}
 • Aromaterapi: ${perfume}
 • Addons: ${addonsString}
 • Catatan Khusus: ${notes}
 
-📅 *JADWAL PENJEMPUTAN:*
+*JADWAL PENJEMPUTAN:*
 • Tanggal: ${pickupDate}
 • Waktu: ${pickupTime}
 
-💳 *PEMBAYARAN & TOTAL:*
+*PEMBAYARAN & TOTAL:*
 • Metode Bayar: ${payment}
 • *ESTIMASI TOTAL: ${grandTotal}*
 

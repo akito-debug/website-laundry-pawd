@@ -1871,6 +1871,7 @@ header.scrolled {
 
 /* ================= Footer ================= */
 footer {
+    width: 100%;
     background: var(--primary-deep);
     color: #ffffff;
     padding-top: 80px;

@@ -113,15 +113,15 @@
                         <div class="badge-icon-bg">🚚</div>
                         <div>
                             <strong>Antar-Jemput Gratis</strong>
-                            <p>Wilayah Seluruh Kota</p>
+                            <p>Di setiap kota</p>
                         </div>
                     </div>
                     
                     <div class="float-badge badge-bottom">
                         <div class="badge-icon-bg">🌸</div>
                         <div>
-                            <strong>Wangi Premium</strong>
-                            <p>Tahan Hingga 14 Hari</p>
+                            <strong>Parfum Premium</strong>
+                            <p>Tahan lama wanginya</p>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E66F5" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     </div>
                     <h3>Chat & Jadwalkan</h3>
-                    <p>Hubungi WhatsApp Cleanzy dan tentukan jam penjemputan pakaian yang pas untuk Anda.</p>
+                    <p>Hubungi WhatsApp Cleanzy atau tekan tombol "Pesan Sekarang" dan tentukan jam penjemputan pakaian yang pas untuk Anda.</p>
                 </div>
                 <div class="step-arrow-line">➔</div>
                 <div class="step-card reveal delay-2">
@@ -298,7 +298,7 @@
                 <div class="storefront-card">
                     <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80" alt="Outlet Cleanzy Laundry" class="storefront-img">
                     <div class="storefront-badge">
-                        <span class="sf-num">10+</span>
+                        <span class="sf-num">5</span>
                         <span class="sf-text">Cabang Outlets Resmi</span>
                     </div>
                 </div>
@@ -465,6 +465,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
     
     <section id="kalkulator" class="calc-section-container">
         <div class="container">
@@ -562,34 +564,7 @@
         </div>
     </section>
 
-    <section class="branch-finder-section">
-        <div class="container">
-            <div class="finder-box reveal">
-                <h3>Duduk di rumah sudah mampir? Cek lokasi cabang & harga terdekat</h3>
-                <form class="finder-form" onsubmit="event.preventDefault(); findBranch();">
-                    <div class="select-group">
-                        <select id="citySelect">
-                            <option value="">-- Pilih Kota Anda --</option>
-                            <option value="jakarta">Jakarta</option>
-                            <option value="bandung">Bandung</option>
-                            <option value="surabaya">Surabaya</option>
-                            <option value="medan">Medan</option>
-                        </select>
-                    </div>
-                    <div class="select-group">
-                        <select id="branchSelect">
-                            <option value="">-- Pilih Cabang Terdekat --</option>
-                            <option value="c1">Cleanzy Main Branch Pusat</option>
-                            <option value="c2">Cleanzy Express Branch Utara</option>
-                            <option value="c3">Cleanzy VIP Branch Selatan</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-finder-submit">Cari Cabang</button>
-                </form>
-                <div id="branchResult" class="branch-result"></div>
-            </div>
-        </div>
-    </section>
+
 
     <section id="testimoni" class="testimonials-section">
         <div class="container">
@@ -661,56 +636,69 @@
 
             <div class="outlet-tabs reveal">
                 <button class="tab-btn active" onclick="filterOutlets('all')">Semua Outlet</button>
-                <button class="tab-btn" onclick="filterOutlets('jakarta')">Jakarta</button>
-                <button class="tab-btn" onclick="filterOutlets('bandung')">Bandung</button>
-                <button class="tab-btn" onclick="filterOutlets('surabaya')">Surabaya</button>
+                <button class="tab-btn" onclick="filterOutlets('yogyakarta')">Yogyakarta</button>
+                <button class="tab-btn" onclick="filterOutlets('purwokerto')">Purwokerto</button>
+                <button class="tab-btn" onclick="filterOutlets('surakarta')">Surakarta</button>
+                <button class="tab-btn" onclick="filterOutlets('ponorogo')">Ponorogo</button>
             </div>
 
             <div class="outlet-grid reveal delay-1">
-                <div class="outlet-card" data-city="jakarta">
+                <div class="outlet-card" data-city="yogyakarta">
                     <div class="outlet-img-box">
-                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Outlet 1">
-                        <span class="outlet-badge">Cleanzy Express #01</span>
+                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Yogyakarta 1">
+                        <span class="outlet-badge">Cleanzy Express #01 (Pusat)</span>
                     </div>
                     <div class="outlet-info">
-                        <h4>Cleanzy Laundry Tebet</h4>
-                        <p>📍 Jl. Tebet Raya No. 45, Jakarta Selatan</p>
+                        <h4>Cleanzy Yogyakarta 1</h4>
+                        <p>📍 Jl. Ring Road Utara, Condongcatur, Depok, Sleman</p>
                         <span class="status-open">● Buka (07.00 - 21.00)</span>
                     </div>
                 </div>
 
-                <div class="outlet-card" data-city="jakarta">
+                <div class="outlet-card" data-city="yogyakarta">
                     <div class="outlet-img-box">
-                        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Outlet 2">
+                        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Yogyakarta 2">
                         <span class="outlet-badge">Cleanzy Express #02</span>
                     </div>
                     <div class="outlet-info">
-                        <h4>Cleanzy Laundry Kelapa Gading</h4>
-                        <p>📍 Jl. Boulevard Barat No. 12, Jakarta Utara</p>
+                        <h4>Cleanzy Yogyakarta 2</h4>
+                        <p>📍 Jl. Seturan Raya No. 15, Caturtunggal, Sleman</p>
                         <span class="status-open">● Buka (07.00 - 21.00)</span>
                     </div>
                 </div>
 
-                <div class="outlet-card" data-city="bandung">
+                <div class="outlet-card" data-city="purwokerto">
                     <div class="outlet-img-box">
-                        <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Outlet 3">
+                        <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Purwokerto">
                         <span class="outlet-badge">Cleanzy Express #03</span>
                     </div>
                     <div class="outlet-info">
-                        <h4>Cleanzy Laundry Dago</h4>
-                        <p>📍 Jl. Ir. H. Juanda No. 88, Bandung</p>
+                        <h4>Cleanzy Purwokerto</h4>
+                        <p>📍 Jl. Prof. Dr. HR Boenyamin No. 70, Purwokerto</p>
                         <span class="status-open">● Buka (07.00 - 21.00)</span>
                     </div>
                 </div>
 
-                <div class="outlet-card" data-city="surabaya">
+                <div class="outlet-card" data-city="surakarta">
                     <div class="outlet-img-box">
-                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Outlet 4">
+                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Surakarta">
                         <span class="outlet-badge">Cleanzy Express #04</span>
                     </div>
                     <div class="outlet-info">
-                        <h4>Cleanzy Laundry Gubeng</h4>
-                        <p>📍 Jl. Raya Gubeng No. 34, Surabaya</p>
+                        <h4>Cleanzy Surakarta</h4>
+                        <p>📍 Jl. Veteran No. 23, Serengan, Surakarta</p>
+                        <span class="status-open">● Buka (07.00 - 21.00)</span>
+                    </div>
+                </div>
+
+                <div class="outlet-card" data-city="ponorogo">
+                    <div class="outlet-img-box">
+                        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=500&q=80" alt="Cleanzy Ponorogo">
+                        <span class="outlet-badge">Cleanzy Express #05</span>
+                    </div>
+                    <div class="outlet-info">
+                        <h4>Cleanzy Ponorogo</h4>
+                        <p>📍 Jl. Ukel No. 4, Kancilan, Ponorogo</p>
                         <span class="status-open">● Buka (07.00 - 21.00)</span>
                     </div>
                 </div>
@@ -760,7 +748,7 @@
 
             <div class="footer-contact">
                 <h4>Kontak Pusat</h4>
-                <p>📍 Jl. Mawar No. 123, Jakarta Selatan</p>
+                <p>📍 Jl. Ring Road Utara, Condongcatur, Depok, Sleman, Yogyakarta 55283</p>
                 <p>📞 WhatsApp: +62 812-2521-2941</p>
                 <p>⏰ Jam Operasional: Setiap Hari (07.00 - 21.00 WIB)</p>
             </div>
